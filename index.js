@@ -73,8 +73,9 @@ const options = {
         await page.click('#App > div > div.header.white > div > div.header-inner__user-info > a')
         await page.waitForSelector('#login-mobile-box')
         await page.click('#login-platform-footer > div:nth-child(4)')
-        //await page.screenshot({path: `static/ ${Date.now()}-qr.png`})
-        await page.pdf({path: `static/ ${Date.now()}-qr.pdf`});
+        await page.waitFor(5000);
+        await page.screenshot({path: `static/ ${Date.now()}-qr.png`})
+        //await page.pdf({path: `static/ ${Date.now()}-qr.pdf`});
 
     }
 
