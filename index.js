@@ -17,7 +17,7 @@ let looping = false;
 const options = {
     args,    
     ignoreHTTPSErrors: true,
-    headless: false,
+    headless: true,
     ignoreDefaultArgs: ["--enable-automation"], 
     userDataDir: './tmp'
 };
