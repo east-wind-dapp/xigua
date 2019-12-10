@@ -65,11 +65,17 @@ const options = {
         !looping && loop()
     })
     
-    await page.waitForSelector('#App > div > div.header.white > div > div.header-inner__user-info > a', { timeout: 3000 })
-    await page.click('#App > div > div.header.white > div > div.header-inner__user-info > a')
-    await page.waitForSelector('#login-mobile-box')
-    await page.click('#login-platform-footer > div:nth-child(4)')
-   
+    const loginPanel = await page.$('.UserPanel__logout')
+
+    if(!loginPanel ){
+
+        await page.waitForSelector('#App > div > div.header.white > div > div.header-inner__user-info > a', { timeout: 3000 })
+        await page.click('#App > div > div.header.white > div > div.header-inner__user-info > a')
+        await page.waitForSelector('#login-mobile-box')
+        await page.click('#login-platform-footer > div:nth-child(4)')
+        await page.waitForNavigation()
+        await page.screenshot({path: `./static/${Date.now()}-qr.png`})
+    }
 
     async function loop(){
         
